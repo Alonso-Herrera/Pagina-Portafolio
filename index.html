@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alonso Herrera · Portafolio Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --sans: 'Plus Jakarta Sans', sans-serif;
+            --serif: 'Fraunces', serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background: var(--bg); 
+            color: var(--text-main); 
+            font-family: var(--sans); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero / Cover Section - Impactful Design */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(circle at top right, #f1f5f9 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: 'DATA';
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            font-size: 20vw;
+            font-weight: 900;
+            color: rgba(37, 99, 235, 0.03);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-content h1 span {
+            display: block;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .profile-frame {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+        }
+
+        .profile-frame::after {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border: 2px solid var(--accent);
+            border-radius: 40px;
+            z-index: -1;
+            transform: rotate(3deg);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+            background: var(--surface);
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Sections */
+        .main-container { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+
+        section { margin-bottom: 8rem; }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-header span {
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        /* Bio Text */
+        .bio-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        /* Skills Matrix - Visual Bars */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .skill-item { margin-bottom: 2rem; }
+        .skill-info { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 0.75rem; }
+        .progress-bg { height: 12px; background: var(--surface); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent-gradient); border-radius: 20px; transition: 1.5s ease-out; }
+
+        /* Project Cards - Premium Style */
+        .project-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            background: #fff;
+        }
+
+        .project-card h3 { font-family: var(--serif); font-size: 1.75rem; margin-bottom: 1rem; color: var(--primary); }
+        .project-card p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem; }
+        
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 1.5rem; }
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover { transform: translateY(-3px); background: #000; }
+
+        .btn-outline {
+            border: 2px solid var(--border);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content h2 { font-family: var(--serif); font-size: 3rem; margin-bottom: 2rem; }
+        .footer-links { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .footer-links a:hover { color: white; }
+
+        @media (max-width: 900px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .btn-group { justify-content: center; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .profile-frame { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Alonso De jesus<br><span>Herrera Cantillo</span></h1>
+                <p class="hero-subtitle">Técnico en Programación para Análisis de Datos. Transformando información compleja en decisiones estratégicas.</p>
+                <div class="btn-group">
+                    <a href="mailto:ah946696@gmail.com" class="btn btn-primary">Contactar</a>
+                    <a href="https://www.linkedin.com/in/alonso-herrera-141a44282/" target="_blank" class="btn btn-primary">LinkedIn</a>
+                    <a href="CV/CV_Alonso-De-Jesus-Herrera-Cantillo.pdf" target="_blank" class="btn btn-primary">Ver CV</a>
+                </div>
+            </div>
+            <div class="profile-frame">
+                <img src="IMG/XD.png" alt="Alonso Herrera" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Alonso+Herrera&background=f1f5f9&color=2563eb&size=400'">
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#perfil">Perfil</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades">Habilidades</a>
+    </nav>
+
+    <div class="main-container">
+        
+        <!-- PERFIL -->
+        <section id="perfil">
+            <div class="section-header">
+                <span>Presentación</span>
+                <h2>Sobre mi enfoque</h2>
+            </div>
+            <p class="bio-text">
+              Soy un Técnico en Análisis de Datos con formación SENA y un fuerte enfoque en programación avanzada para la limpieza y visualización de información. Mi objetivo es claro: aplicar mis habilidades técnicas para optimizar procesos y facilitar la toma de decisiones estratégicas. Estoy listo para mi etapa de prácticas y mi compromiso es uno solo: entregar resultados de calidad técnica superior..
+            </p>
+        </section>
+
+        <!-- PROYECTOS -->
+        <section id="proyectos">
+            <div class="section-header">
+                <span>Portafolio</span>
+                <h2>Casos de Estudio</h2>
+            </div>
+            
+            <a href="https://drive.google.com/drive/folders/1lLwTrUjpD2NXpgzG0Qs8X_ZI1B4oN54_?hl=es" target="_blank" class="project-card">
+                <h3>Portafolio Estudiantil Oficial</h3>
+                <p>Mi trayectoria completa en el SENA. Un repositorio exhaustivo que incluye evidencias de aprendizaje, certificaciones técnicas y el desarrollo de mis competencias en programación y análisis.</p>
+                <div class="project-link-btn">Ver formación completa →</div>
+            </a>
+
+            <a href="https://drive.google.com/drive/folders/1xy3n5tA3kaDQzBpsdG5MU3cPVU7HQXbL?hl=es" target="_blank" class="project-card">
+                <h3>Análisis de Datos Reales</h3>
+                <p>Proyectos prácticos donde aplico herramientas como Excel y Power BI. Destaca el análisis de tendencias de seguridad (2020-2025) y la gestión de datasets estructurados.</p>
+                <div class="project-link-btn">Explorar análisis →</div>
+
+
+              <a href="https://github.com/Alonso-Herrera" target="_blank" class="project-card">
+                <h3>Perfil de github</h3>
+                <p>Aca puedes encontrar proyectos mas orientados a la programacion y POWER BI como enfoque.</p>
+                <div class="project-link-btn">Explorar Perfil →</div>
+            </a>
+            </a>
+        </section>
+
+        <!-- HABILIDADES -->
+        <section id="habilidades">
+            <div class="section-header">
+                <span>Competencias</span>
+                <h2>Dominio Técnico</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-info"><span>Power BI</span><span>90%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>SQL</span><span>70%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 70%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Excel Avanzado</span><span>60%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 60%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python</span><span>70%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 60%"></div></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h2>¿Trabajamos juntos?</h2>
+            <div class="footer-links">
+                <a href="mailto:ah946696@gmail.com">Email</a>
+                <a href="https://github.com/Alonso-Herrera" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/alonso-herrera-141a44282/" target="_blank">LinkedIn</a>
+            </div>
+            <p class="copy">© 2026 · Alonso Herrera · Técnico en Programación para Análisis de Datos</p>
+        </div>
+    </footer>
+
+</body>
+</html>
